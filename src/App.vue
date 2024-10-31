@@ -51,7 +51,7 @@
       <!-- About Section -->
       <section id="about" class="about section">
         <div class="container section-title" data-aos="fade-up">
-          <h2>About</h2>
+          <h2>About Me</h2>
           <p>My name is Marc, I'm currently studying the course Bachelor of Science In Information Technology as a third year student at Caraga State University.</p>
         </div>
 
