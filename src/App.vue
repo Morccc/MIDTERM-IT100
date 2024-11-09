@@ -221,20 +221,31 @@
 
      <!-- Project Section -->
      <section id="portfolio" class="portfolio section light-background">
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Project</h2>
-          <p class="fst-italic">During my time in college, I collaborated with three talented peers to develop an AI-based recipe generator app called BHk (short for Bootleg Hell's Kitchen). Designed with college students in mind, this app elevates their culinary experience by transforming limited ingredients into gourmet-level dishes.
-          <br><br>
-          Our AI, affectionately named Cecil (based on OpenAI's GPT-3.5), has evolved into more than just a program. Through careful tuning and prompt adjustments, I've given Cecil a distinctive personality, ensuring it delivers accurate and essential recipe suggestions while filtering out irrelevant or "junk" ingredients.
-          <br><br>
-          With Cecil at the core, BHk brings a blend of fun, creativity, and practicality to the kitchen, making gourmet cooking accessible to everyone.
-          <br><br>
-          <b>Explore the full app experience with the sample photos below or check out the in-depth video presentation of the app in the link below:</b>
-          <a href="https://www.facebook.com/Ybiernasmarc12/posts/pfbid0C4bPafi33dfGsjS7zmXq26RyLR4TJNZwNxt7Ndy3ijEcUwXTvGqMJ1bz5181nQ9Ql" target="_blank" rel="noopener noreferrer">
-            Visit my Facebook post
-          </a>
-          </p>
-        </div>
+      <div class="container section-title" data-aos="fade-up">
+  <h2>Project</h2>
+  <p class="fst-italic text-justify">
+    <span class="fs-3">T</span>hroughout my academic journey, I’ve had the opportunity to apply my programming skills to a variety of real-world projects, each of which has helped shape my understanding of both development and problem-solving. One such project was the creation of a **market website for Terraria**, an activity completed as part of the subject *LIE*. This project required me to design and implement a fully functional, user-friendly platform for the buying and selling of in-game items, with features including user authentication, product listings, and secure transactions. It was a comprehensive experience that allowed me to apply my knowledge of both frontend and backend development in a real-world context.
+    <br><br>
+    In addition to the Terraria market website, I’ve also developed several other applications. One of these is a **Weather App**, which delivers real-time weather updates and forecasts, giving users the information they need to plan their day. Another project, the **To-Do List App**, was built to help users organize their tasks and boost productivity. Both of these projects not only sharpened my coding abilities but also allowed me to focus on creating user-centric designs and intuitive interfaces.
+    <br><br>
+    Beyond these projects, I have also earned multiple certificates from **SoloLearn** in various programming languages, including HTML, CSS, JavaScript, Java, and Intermediate Java. These certifications have been instrumental in building a strong foundation in web and software development, providing me with the knowledge and confidence to create interactive, dynamic applications that deliver real value to users.
+  </p>
+  <p class="fst-italic">
+    <span class="fs-3">D</span>uring my time in college, I had the privilege of collaborating with three incredibly talented peers to create an innovative and highly practical app called **BHK** (short for Bootleg Hell's Kitchen). Designed with college students in mind, this AI-powered recipe generator is more than just a cooking app—it's a solution to the challenge of limited ingredients and the need for quick, delicious meals. Whether you're a novice cook or a seasoned chef, BHK transforms whatever ingredients you have on hand into gourmet-level dishes, elevating your culinary experience right in the comfort of your kitchen.
+    <br><br>
+    The heart and soul of BHK is our AI, affectionately named **Cecil**, built on OpenAI's GPT-3.5. What started as a simple AI for recipe generation has since evolved into something much more personal. Through careful tuning and the application of creative prompts, I shaped Cecil’s personality, making sure it not only offers accurate and essential recipe suggestions but also filters out irrelevant or "junk" ingredients. The result is an AI companion that feels more like a sous chef, always ready to assist and inspire.
+    <br><br>
+    BHK is more than just a tool—it’s an exciting and interactive kitchen companion, blending fun, creativity, and practicality. It’s designed to make cooking accessible to everyone, regardless of skill level, while encouraging users to explore new flavors and techniques in their culinary adventures.
+    <br><br>
+    <b>Explore the full app experience with the sample photos below, or immerse yourself in the complete app journey by checking out the in-depth video presentation in the link below:</b>
+    <a href="https://www.facebook.com/Ybiernasmarc12/posts/pfbid0C4bPafi33dfGsjS7zmXq26RyLR4TJNZwNxt7Ndy3ijEcUwXTvGqMJ1bz5181nQ9Ql" target="_blank" rel="noopener noreferrer">
+      Visit my Facebook post
+    </a>
+  </p>
+  
+  
+</div>
+
 
         <div class="container">
     <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
