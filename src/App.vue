@@ -681,7 +681,7 @@ export default {
     /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
     --contrast-color: #ffffff;
     /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-    =======--default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --heading-font: "Raleway", sans-serif;
     --nav-font: "Poppins", sans-serif;
   }
@@ -1857,6 +1857,7 @@ export default {
   .contact .php-email-form button[type=submit] {
     color: var(--contrast-color);
     background: var(--accent-color);
+    background: black;
     border: 0;
     padding: 10px 30px;
     transition: 0.4s;
