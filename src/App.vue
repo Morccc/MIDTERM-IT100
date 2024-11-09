@@ -5,7 +5,7 @@
   <i class="header-toggle d-xl-none bi" 
      :class="isHeaderOpen ? 'bi-x' : 'bi-list'" 
      @click="toggleHeader" 
-     style="color: black; background-color: whitesmoke;"></i>
+     style="color: white; background-color: black;"></i>
 
   <div class="profile-img">
     <img :src="profileImage" alt="Profile Image" class="img-fluid rounded">
@@ -219,8 +219,8 @@
         </div>
       </section>
 
-      <!-- Project Section -->
-      <section id="portfolio" class="portfolio section light-background">
+     <!-- Project Section -->
+     <section id="portfolio" class="portfolio section light-background">
         <div class="container section-title" data-aos="fade-up">
           <h2>Project</h2>
           <p class="fst-italic">During my time in college, I collaborated with three talented peers to develop an AI-based recipe generator app called BHk (short for Bootleg Hell's Kitchen). Designed with college students in mind, this app elevates their culinary experience by transforming limited ingredients into gourmet-level dishes.
@@ -237,32 +237,42 @@
         </div>
 
         <div class="container">
-          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-            <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Login & Register</li>
-              <li data-filter=".filter-product">Favorites</li>
-              <li data-filter=".filter-branding">Home</li>
-              <li data-filter=".filter-books">Settings</li>
-            </ul>
+    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+      <!-- Filters Section -->
+      <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
+        <li @click="setFilter('*')" :class="{ 'filter-active': currentFilter === '*' }">All</li>
+        <li @click="setFilter('.filter-app')" :class="{ 'filter-active': currentFilter === '.filter-app' }">BHK</li>
+        <li @click="setFilter('.filter-product')" :class="{ 'filter-active': currentFilter === '.filter-product' }">Websites</li>
+        <li @click="setFilter('.filter-branding')" :class="{ 'filter-active': currentFilter === '.filter-branding' }">Applications</li>
+        <li @click="setFilter('.filter-books')" :class="{ 'filter-active': currentFilter === '.filter-books' }">Certificates</li>
+      </ul>
 
-            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-              <!-- Portfolio items -->
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                <div class="portfolio-content h-100">
-                  <img src="" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>Front</h4>
-                    <p>Front Of The App</p>
-                    <a href="" title="Front of the app having a bootleg version pic of famous cheif Gordon Ramsay." data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                    <a href="https://www.facebook.com/Ybiernasmarc12/posts/pfbid0C4bPafi33dfGsjS7zmXq26RyLR4TJNZwNxt7Ndy3ijEcUwXTvGqMJ1bz5181nQ9Ql" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div>
-              <!-- More portfolio items... -->
+      <!-- Portfolio Items Section -->
+      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
+        <!-- Portfolio items -->
+        <div v-for="item in filteredItems" :key="item.id" :class="['col-lg-4', 'col-md-6', 'portfolio-item', item.filterClass]" class="isotope-item">
+          <div class="portfolio-content h-100">
+            <!-- Dynamic image binding -->
+            <img :src="item.imageSrc" class="img-fluid" :alt="item.title">
+
+            <!-- Portfolio Information -->
+            <div class="portfolio-info">
+              <h4>{{ item.title }}</h4>
+              <p>{{ item.description }}</p>
+              <a :href="item.detailsLink" title="More details" class="details-link">
+                <i class="bi bi-link-45deg"></i>
+              </a>
+              <a :href="item.imageSrc" title="View Gallery" class="glightbox preview-link">
+                <i class="bi bi-zoom-in"></i>
+              </a>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+
       </section>
 
       <!-- Contact Section -->
@@ -332,15 +342,19 @@
         </div>
       </section>
       <footer id="footer" class="footer position-relative light-background">
-    <div class="container">
-        <div class="copyright text-center">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">Marco</strong> <span>All Rights Reserved</span></p>
+        <div class="container">
+            <div class="copyright text-center">
+                <p>© <span>Copyright</span> <strong class="px-1 sitename">Marco</strong> <span>All Rights Reserved</span></p>
+            </div>
+            <div class="credits text-center">
+                Customized by <a href="https://www.facebook.com/Ybiernasmarc12/">Marco</a>
+            </div>
+             <!-- Scroll-to-top button -->
+    <button @click="scrollToTop" class="scroll-top-btn btn btn-dark">
+      <i class="bi bi-arrow-up"></i>
+    </button>
         </div>
-        <div class="credits text-center">
-            Customized by <a href="https://www.facebook.com/Ybiernasmarc12/">Marco</a>
-        </div>
-    </div>
-</footer>
+      </footer>
     </main>
 </div>
 
@@ -360,6 +374,8 @@ import AOS from 'aos';
 import Typed from 'typed.js';
 import { CountUp } from 'countup.js';
 
+import GLightbox from 'glightbox';
+
 export default {
   data() {
     return {
@@ -368,7 +384,117 @@ export default {
       cardPic,
       isHeaderOpen: false, // Manage header toggle state
       progressAnimated: false, // Track if progress bars have animated
+      currentFilter: '.filter-app', // Default filter is 'All'
+      portfolioItems: [
+        {
+          id: 1,
+          title: 'Front - BHK',
+          description: 'Front Of The App',
+          imageSrc: require('@/assets/Front.jpg'),
+          filterClass: 'filter-app',
+          gallery: 'portfolio-gallery-app',
+          detailsLink: 'https://www.facebook.com/Ybiernasmarc12/posts/pfbid0C4bPafi33dfGsjS7zmXq26RyLR4TJNZwNxt7Ndy3ijEcUwXTvGqMJ1bz5181nQ9Ql',
+        },
+        {
+          id: 2,
+          title: 'Dashboard - BHK',
+          description: 'Dashboard Demo Prompt',
+          imageSrc: require('@/assets/Home2.jpg'),
+          filterClass: 'filter-app',
+          gallery: 'portfolio-gallery-app',
+          detailsLink: 'https://www.facebook.com/Ybiernasmarc12/posts/pfbid0C4bPafi33dfGsjS7zmXq26RyLR4TJNZwNxt7Ndy3ijEcUwXTvGqMJ1bz5181nQ9Ql',
+        },
+        {
+          id: 3,
+          title: 'Dashboard - BHK',
+          description: 'Dashboard',
+          imageSrc: require('@/assets/Home1.jpg'),
+          filterClass: 'filter-app',
+          gallery: 'portfolio-gallery-app',
+          detailsLink: 'https://www.facebook.com/Ybiernasmarc12/posts/pfbid0C4bPafi33dfGsjS7zmXq26RyLR4TJNZwNxt7Ndy3ijEcUwXTvGqMJ1bz5181nQ9Ql',
+        },
+        {
+          id: 4,
+          title: 'Terraria Market Website - Website',
+          description: 'Market Website I Made For Terraria As An Activity',
+          imageSrc: require('@/assets/terraria1.png'), // Add new image path
+          filterClass: 'filter-product', // Choose filter category
+          gallery: 'portfolio-gallery-app',
+          detailsLink: 'https://multimedia-activity-lie.vercel.app/',
+        },
+        {
+          id: 5,
+          title: 'To Do List - Application',
+          description: 'A To Do List App',
+          imageSrc: require('@/assets/todolist.png'), // Add new image path
+          filterClass: 'filter-branding', // This is under a different category, such as "Favorites"
+          gallery: 'portfolio-gallery-product',
+          detailsLink: 'https://vue-activity-to-do-list.vercel.app/',
+        },
+        {
+          id: 6,
+          title: 'Weather App - Application',
+          description: 'Weather Application',
+          imageSrc: require('@/assets/weather.png'), // Add new image path
+          filterClass: 'filter-branding', // Another filter category, such as "Home"
+          gallery: 'portfolio-gallery-branding',
+          detailsLink: 'https://it-110-weather-app.vercel.app/',
+        },
+        {
+          id: 7,
+          title: 'Html - Certificates',
+          description: 'Certificate',
+          imageSrc: require('@/assets/html.png'), // Add new image path
+          filterClass: 'filter-books', // This is under a different category, such as "Favorites"
+          gallery: 'portfolio-gallery-product',
+          detailsLink: '',
+        },
+        {
+          id: 8,
+          title: 'CSS - Certificates',
+          description: 'Certificate',
+          imageSrc: require('@/assets/css.png'), // Add new image path
+          filterClass: 'filter-books', // This is under a different category, such as "Favorites"
+          gallery: 'portfolio-gallery-product',
+          detailsLink: '',
+        },
+        {
+          id: 9,
+          title: 'JavaScript - Certificates',
+          description: 'Certificate',
+          imageSrc: require('@/assets/js.png'), // Add new image path
+          filterClass: 'filter-books', // This is under a different category, such as "Favorites"
+          gallery: 'portfolio-gallery-product',
+          detailsLink: '',
+        },
+        {
+          id: 10,
+          title: 'Java - Certificates',
+          description: 'Certificate',
+          imageSrc: require('@/assets/java1.png'), // Add new image path
+          filterClass: 'filter-books', // This is under a different category, such as "Favorites"
+          gallery: 'portfolio-gallery-product',
+          detailsLink: '',
+        },
+        {
+          id: 11,
+          title: 'Java Intermediate - Certificates',
+          description: 'Certificate',
+          imageSrc: require('@/assets/java2.png'), // Add new image path
+          filterClass: 'filter-books', // This is under a different category, such as "Favorites"
+          gallery: 'portfolio-gallery-product',
+          detailsLink: '',
+        },
+      ],
     };
+  },
+  computed: {
+    filteredItems() {
+      if (this.currentFilter === '*') {
+        return this.portfolioItems;
+      }
+      return this.portfolioItems.filter(item => item.filterClass === this.currentFilter.slice(1));
+    }
   },
   methods: {
     toggleHeader() {
@@ -452,7 +578,16 @@ export default {
         }
       });
     },
-    
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    },
+    // Filter items when the filter is clicked
+    setFilter(filter) {
+      this.currentFilter = filter;
+    }
   },
 
   mounted() {
@@ -466,9 +601,29 @@ export default {
     if (preloader) {
       preloader.remove();
     }
+
+    // Ensure GLightbox is initialized after the DOM updates
+    this.$nextTick(() => {
+      const lightbox = GLightbox({
+        selector: '.glightbox',  // Ensure selector matches the class used for the zoom-in button
+        zoomable: true,  // This allows the zoom functionality
+        touchNavigation: true, // Enable touch navigation for mobile devices
+        loop: true, // Enable looping through the gallery
+      });
+
+      // Add functionality to close the GLightbox (Exit feature)
+      const exitButton = document.querySelector('#exit-gallery'); // Get the Exit button
+      if (exitButton) {
+        exitButton.addEventListener('click', () => {
+          lightbox.close(); // Close GLightbox when the Exit button is clicked
+        });
+      }
+    });
   },
 };
 </script>
+
+
 
 
 
@@ -906,7 +1061,17 @@ export default {
     text-align: center; /* Center text within items */
 }
 
-
+.scroll-top-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
   
