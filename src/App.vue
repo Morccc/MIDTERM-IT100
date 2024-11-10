@@ -259,7 +259,7 @@
       </ul>
 
       <!-- Portfolio Items Section -->
-      <div class="row gy-4 isotope-container" data-aos="zoom-out-down" data-aos-delay="300">
+      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="500">
         <!-- Portfolio items -->
         <div v-for="item in filteredItems" :key="item.id" :class="['col-lg-4', 'col-md-6', 'portfolio-item', item.filterClass]" class="isotope-item">
           <div class="portfolio-content h-100">
