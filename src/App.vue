@@ -78,7 +78,7 @@
                   <ul>
                     <li><i class="bi bi-chevron-double-right"></i> <strong>Age:</strong> <span>20</span></li>
                     <li><i class="bi bi-chevron-double-right"></i> <strong>Degree:</strong> <span>N/A</span></li>
-                    <li><i class="bi bi-chevron-double-right"></i> <strong>Email:</strong> <span>ybiernasmarc@example.com</span></li>
+                    <li><i class="bi bi-chevron-double-right"></i> <strong>Email:</strong> <span>ybiernasmarc@gmail.com</span></li>
                     <li><i class="bi bi-chevron-double-right"></i> <strong>Freelance:</strong> <span>N/A</span></li>
                   </ul>
                 </div>
@@ -259,7 +259,7 @@
       </ul>
 
       <!-- Portfolio Items Section -->
-      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
+      <div class="row gy-4 isotope-container" data-aos="zoom-out-down" data-aos-delay="300">
         <!-- Portfolio items -->
         <div v-for="item in filteredItems" :key="item.id" :class="['col-lg-4', 'col-md-6', 'portfolio-item', item.filterClass]" class="isotope-item">
           <div class="portfolio-content h-100">
@@ -273,7 +273,7 @@
               <a :href="item.detailsLink" title="More details" class="details-link">
                 <i class="bi bi-link-45deg"></i>
               </a>
-              <a :href="item.imageSrc" title="View Gallery" class="glightbox preview-link">
+              <a :href="item.imageSrc" :data-gallery="item.gallery" title="View Gallery" class="glightbox preview-link">
                 <i class="bi bi-zoom-in"></i>
               </a>
             </div>
@@ -384,7 +384,6 @@ import cardPic from '@/assets/profile2.jpg';
 import AOS from 'aos';
 import Typed from 'typed.js';
 import { CountUp } from 'countup.js';
-
 import GLightbox from 'glightbox';
 
 export default {
@@ -428,26 +427,26 @@ export default {
           id: 4,
           title: 'Terraria Market Website - Website',
           description: 'Market Website I Made For Terraria As An Activity',
-          imageSrc: require('@/assets/terraria1.png'), // Add new image path
-          filterClass: 'filter-product', // Choose filter category
-          gallery: 'portfolio-gallery-app',
+          imageSrc: require('@/assets/terraria1.png'),
+          filterClass: 'filter-product',
+          gallery: 'portfolio-gallery-product',
           detailsLink: 'https://multimedia-activity-lie.vercel.app/',
         },
         {
           id: 5,
           title: 'To Do List - Application',
           description: 'A To Do List App',
-          imageSrc: require('@/assets/todolist.png'), // Add new image path
-          filterClass: 'filter-branding', // This is under a different category, such as "Favorites"
-          gallery: 'portfolio-gallery-product',
+          imageSrc: require('@/assets/todolist.png'),
+          filterClass: 'filter-branding',
+          gallery: 'portfolio-gallery-branding',
           detailsLink: 'https://vue-activity-to-do-list.vercel.app/',
         },
         {
           id: 6,
           title: 'Weather App - Application',
           description: 'Weather Application',
-          imageSrc: require('@/assets/weather.png'), // Add new image path
-          filterClass: 'filter-branding', // Another filter category, such as "Home"
+          imageSrc: require('@/assets/weather.png'),
+          filterClass: 'filter-branding',
           gallery: 'portfolio-gallery-branding',
           detailsLink: 'https://it-110-weather-app.vercel.app/',
         },
@@ -455,45 +454,45 @@ export default {
           id: 7,
           title: 'Html - Certificates',
           description: 'Certificate',
-          imageSrc: require('@/assets/html.png'), // Add new image path
-          filterClass: 'filter-books', // This is under a different category, such as "Favorites"
-          gallery: 'portfolio-gallery-product',
+          imageSrc: require('@/assets/html.png'),
+          filterClass: 'filter-books',
+          gallery: 'portfolio-gallery-books',
           detailsLink: '',
         },
         {
           id: 8,
           title: 'CSS - Certificates',
           description: 'Certificate',
-          imageSrc: require('@/assets/css.png'), // Add new image path
-          filterClass: 'filter-books', // This is under a different category, such as "Favorites"
-          gallery: 'portfolio-gallery-product',
+          imageSrc: require('@/assets/css.png'),
+          filterClass: 'filter-books',
+          gallery: 'portfolio-gallery-books',
           detailsLink: '',
         },
         {
           id: 9,
           title: 'JavaScript - Certificates',
           description: 'Certificate',
-          imageSrc: require('@/assets/js.png'), // Add new image path
-          filterClass: 'filter-books', // This is under a different category, such as "Favorites"
-          gallery: 'portfolio-gallery-product',
+          imageSrc: require('@/assets/js.png'),
+          filterClass: 'filter-books',
+          gallery: 'portfolio-gallery-books',
           detailsLink: '',
         },
         {
           id: 10,
           title: 'Java - Certificates',
           description: 'Certificate',
-          imageSrc: require('@/assets/java1.png'), // Add new image path
-          filterClass: 'filter-books', // This is under a different category, such as "Favorites"
-          gallery: 'portfolio-gallery-product',
+          imageSrc: require('@/assets/java1.png'),
+          filterClass: 'filter-books',
+          gallery: 'portfolio-gallery-books',
           detailsLink: '',
         },
         {
           id: 11,
           title: 'Java Intermediate - Certificates',
           description: 'Certificate',
-          imageSrc: require('@/assets/java2.png'), // Add new image path
-          filterClass: 'filter-books', // This is under a different category, such as "Favorites"
-          gallery: 'portfolio-gallery-product',
+          imageSrc: require('@/assets/java2.png'),
+          filterClass: 'filter-books',
+          gallery: 'portfolio-gallery-books',
           detailsLink: '',
         },
       ],
@@ -509,17 +508,15 @@ export default {
   },
   methods: {
     toggleHeader() {
-      this.isHeaderOpen = !this.isHeaderOpen; // Update state to show/hide header
+      this.isHeaderOpen = !this.isHeaderOpen;
     },
     handleNavClick(event) {
-      event.preventDefault(); // Prevent default behavior to control scrolling
-      const targetId = event.target.getAttribute('href'); // Get the target section
-      const targetElement = document.querySelector(targetId); // Select the section
+      event.preventDefault();
+      const targetId = event.target.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
 
-      // Scroll smoothly to the target section
       targetElement.scrollIntoView({ behavior: 'smooth' });
 
-      // Close the header once a nav link is clicked (for mobile)
       if (this.isHeaderOpen) {
         this.isHeaderOpen = false;
       }
@@ -553,13 +550,13 @@ export default {
       new CountUp(this.$refs.experienceCounter, 2, { duration: 15 }).start();
     },
     animateProgressBars() {
-      if (this.progressAnimated) return; // Prevent multiple animations
-      this.progressAnimated = true; // Set to true to prevent re-animation
+      if (this.progressAnimated) return;
+      this.progressAnimated = true;
 
       const progressBars = document.querySelectorAll('.progress-bar');
       progressBars.forEach((bar) => {
         const value = bar.getAttribute('aria-valuenow');
-        bar.style.width = `${value}%`; // Set width based on value
+        bar.style.width = `${value}%`;
       });
     },
     handleScroll() {
@@ -595,7 +592,6 @@ export default {
         behavior: 'smooth'
       });
     },
-    // Filter items when the filter is clicked
     setFilter(filter) {
       this.currentFilter = filter;
     }
@@ -613,26 +609,50 @@ export default {
       preloader.remove();
     }
 
-    // Ensure GLightbox is initialized after the DOM updates
     this.$nextTick(() => {
       const lightbox = GLightbox({
-        selector: '.glightbox',  // Ensure selector matches the class used for the zoom-in button
-        zoomable: true,  // This allows the zoom functionality
-        touchNavigation: true, // Enable touch navigation for mobile devices
-        loop: true, // Enable looping through the gallery
+        selector: '.glightbox',
+        zoomable: true,
+        touchNavigation: true,
+        loop: true,
       });
 
-      // Add functionality to close the GLightbox (Exit feature)
-      const exitButton = document.querySelector('#exit-gallery'); // Get the Exit button
+      let isLightboxOpen = false;
+
+      lightbox.on('open', () => {
+        isLightboxOpen = true;
+      });
+
+      lightbox.on('close', () => {
+        isLightboxOpen = false;
+      });
+
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && isLightboxOpen) {
+          lightbox.close();
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        const glightboxOverlay = document.querySelector('.gcontainer');
+        if (isLightboxOpen && glightboxOverlay && !glightboxOverlay.contains(event.target)) {
+          lightbox.close();
+        }
+      });
+
+      const exitButton = document.querySelector('#exit-gallery');
       if (exitButton) {
         exitButton.addEventListener('click', () => {
-          lightbox.close(); // Close GLightbox when the Exit button is clicked
+          if (isLightboxOpen) {
+            lightbox.close();
+          }
         });
       }
     });
   },
 };
 </script>
+
 
 
 
@@ -681,7 +701,7 @@ export default {
     /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
     --contrast-color: #ffffff;
     /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --default-font: "Roboto", system-ui, "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --heading-font: "Raleway", sans-serif;
     --nav-font: "Poppins", sans-serif;
   }
@@ -855,7 +875,7 @@ export default {
 .header .profile-img img {
   margin: 15px auto;
   display: block;
-  width: 120px;
+  width: 200px;
   border: 8px solid color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
@@ -870,10 +890,11 @@ export default {
 }
 
 .header .logo h1 {
-  font-size: 24px;
+  font-size: 30px;
   margin: 0;
   font-weight: 700;
   color: var(--heading-color);
+  font-family: 'Luxi Mono';
 }
 
 .header .social-links {
@@ -893,6 +914,7 @@ export default {
   width: 40px;
   height: 40px;
   transition: 0.3s;
+  font-family: 'Luxi Mono';
 }
 
 .header .social-links a:hover {
@@ -915,6 +937,7 @@ export default {
 
 .header.header-show {
   left: 0;
+  width: 250px;
 }
 
 .header .header-toggle {
