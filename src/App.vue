@@ -1099,7 +1099,8 @@ export default {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  font-size: 24px;
+  width: 40px;
+  height: 40px;
   padding: 10px;
   border-radius: 50%;
   display: flex;
