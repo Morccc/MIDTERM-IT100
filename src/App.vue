@@ -939,7 +939,7 @@ export default {
 
 .header.header-show {
   left: 0;
-  width: 250px;
+  width: 280px;
 }
 
 .header .header-toggle {
