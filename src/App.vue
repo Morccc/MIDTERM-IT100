@@ -16,10 +16,10 @@
   </a>
 
   <div class="social-links mt-3 text-center">
-    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-    <a href="#" class="github"><i class="bi bi-github"></i></a>
+    <a href="https://x.com/marcbashley" class="twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://www.facebook.com/Ybiernasmarc12/" class="facebook"><i class="bi bi-facebook"></i></a>
+    <a href="https://www.instagram.com/bashley_21/" class="instagram"><i class="bi bi-instagram"></i></a>
+    <a href="https://github.com/Morccc" class="github"><i class="bi bi-github"></i></a>
   </div>
 
   <nav id="navmenu" class="navmenu" :class="{ 'active': isHeaderOpen }">
