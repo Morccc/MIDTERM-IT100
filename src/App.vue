@@ -1105,7 +1105,7 @@ export default {
   height: 40px;
   padding: 10px;
   border-radius: 50%;
-  /* display: flex; */
+  display: flex;
   align-items: center;
   justify-content: center;
 }
