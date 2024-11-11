@@ -19,6 +19,8 @@
     <a href="https://x.com/marcbashley" class="twitter"><i class="bi bi-twitter"></i></a>
     <a href="https://www.facebook.com/Ybiernasmarc12/" class="facebook"><i class="bi bi-facebook"></i></a>
     <a href="https://www.instagram.com/bashley_21/" class="instagram"><i class="bi bi-instagram"></i></a>
+    <a href="mailto:ybiernasmarc@gmail.com" class="gmail"><i class="bi bi-envelope"></i></a>
+
     <a href="https://github.com/Morccc" class="github"><i class="bi bi-github"></i></a>
   </div>
 
@@ -167,7 +169,7 @@
             </div>
           </div>
           <div class="progress">
-            <span class="skill"><span>Photoshop</span> <i class="val">55%</i></span>
+            <span class="skill"><span>Vue & Vuetify</span> <i class="val">55%</i></span>
             <div class="progress-bar-wrap">
               <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
@@ -212,7 +214,7 @@
             </div>
           </div>
           <div class="my-4 text-center">
-            <a href="./assets/file/RESUME FINAL NAGYUD.pdf" download="MyResume_Marcof" class="btn btn-light text-gray-700">
+            <a href="./assets/file/RESUME FINAL NAGYUD.pdf" download="MyResume_Marcof" class="btn btn-dark text-gray-700">
               Get My Resume
             </a>
           </div>
@@ -1103,9 +1105,15 @@ export default {
   height: 40px;
   padding: 10px;
   border-radius: 50%;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
+}
+
+.btn-light {
+  color: white;
+  background: black;
+  
 }
 
 
